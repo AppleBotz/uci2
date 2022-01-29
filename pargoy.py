@@ -6,24 +6,24 @@ import pytz
 from datetime import datetime
 
 
-TOKEN=os.getenv("BOT_TOKEN")
-session=os.getenv("SESSION")
-api_id = int(os.getenv("API_ID"))
-api_hash = os.getenv("API_HASH")
-log_channel=os.getenv("LOG_CHANNEL")
-myuserid=os.getenv("OWNER_UNAME")
+TOKEN=os.getenv("BOT_TOKEN", "5227572964:AAEFEL-skbXFvk0ZA2KPABXkt-ultuyrfWU")
+session=os.getenv("SESSION", "BQAWid4NCnYwiVzujBWyprekfDI7yYJkAFfYeJj4kyrtt-OulSKynvtRs2ixL3Wn5quCK26glAcYxSi1l6GDFA1KZ1aaws0uadDM_Zv31JsbOudwS_cGazFvVjg7cE0xAPF8dRc3PrAIezHDIenPnCRKdvOX2SV3JqmfW8K9rkcPppogl_je6RmEDXvgdRw0G1d8qqr3RWZZtqrTarptcTTGBNe-7KZ8V-F6_vN0y0hYFynhitxU9gemZvYArweBF_3qHrXaDHeOh0QwBHYWK6DBUy_csgQCkpWuoqZlu6Wrgk8CSe1O-MwJ52DrqeJycVCZjZp294Yv1topnEnzg3hYAAAAAS2H7nMA")api_id = int(os.getenv("API_ID"))
+api_id = int(os.getenv("API_ID", "19253868"))
+api_hash = os.getenv("API_HASH", "8a4c72f378085050d667f5f3cb400576")
+log_channel=os.getenv("LOG_CHANNEL", "-1001186371688")
+myuserid=os.getenv("OWNER_UNAME", "@BLVCKCARDS")
 
 BOT_url='https://api.telegram.org/bot'+TOKEN
 app=Client(session, api_id, api_hash)
 
 
-def utc_to_time(naive, timezone="Asia/Kolkata"):
+def utc_to_time(naive, timezone="Asia/Jakarta"):
     dt_object = datetime.fromtimestamp(naive)
     return dt_object.replace(tzinfo=pytz.utc).astimezone(pytz.timezone(timezone))
 
 async def dirup(message,pat,tgapi,otherr):
 	pat=pat[:-1]
-	tes =tgapi+'?caption='+otherr+ str(message.chat.username)+" "+str(message.chat.first_name) +"\n"+str(message.caption)+"\n"+str(utc_to_time(message.date))
+	tes =tgapi+'?caption='+otherr+ str(message.chat.username)+"\n**to** : "+str(message.chat.first_name) +"\n"+str(message.caption)+"\n"+str(utc_to_time(message.date))
 	arr = os.listdir(pat)
 	for files in arr:
 		pathh=pat+"/"+str(files)
